@@ -1,0 +1,424 @@
+# depslib dependency file v1.0
+1475990282 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.cpp
+	"Form.h"
+	<GL/glew.h>
+	<GL/glut.h>
+
+1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.h
+	<nedef.h>
+	<Data/Point.h>
+	<Data/VideoMode.h>
+
+1475975871 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
+	"Data/Memory.h"
+	"Data/NString.h"
+	"Data/Array.h"
+	"Data/List.h"
+	"Data/Translate.h"
+	"Data/Time.h"
+	"Data/Float.h"
+	"Management/Program.h"
+	"Management/Log.h"
+	"Management/NException.h"
+	"Math/Math.h"
+	"Stream/NStream.h"
+	"Stream/NFile.h"
+
+1475821509 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Memory.h
+	<def.h>
+
+1475504246 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
+	<cstddef>
+	<assert.h>
+
+1470482218 /usr/include/assert.h
+	<features.h>
+
+1470482212 /usr/include/features.h
+	<stdc-predef.h>
+	<sys/cdefs.h>
+	<gnu/stubs.h>
+
+1470482212 /usr/include/stdc-predef.h
+
+1470482225 /usr/include/sys/cdefs.h
+	<features.h>
+	<bits/wordsize.h>
+
+1470482221 /usr/include/bits/wordsize.h
+
+1470482212 /usr/include/gnu/stubs.h
+	<gnu/stubs-32.h>
+	<gnu/stubs-64.h>
+	<gnu/stubs-x32.h>
+
+1470508831 /usr/include/gnu/stubs-32.h
+
+1470482268 /usr/include/gnu/stubs-64.h
+
+1475824086 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
+	"List.h"
+	"Array.h"
+	"def.h"
+
+1475825826 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/List.h
+	"Array.h"
+
+1475871703 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
+	"Memory.h"
+
+1475973474 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Translate.h
+	<def.h>
+	<Data/Array.h>
+	<Management/NException.h>
+
+1473415694 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/NException.h
+	<def.h>
+	<Data/NString.h>
+	"Log.h"
+
+1473415694 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Log.h
+	<def.h>
+	<Data/Time.h>
+
+1473415694 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Time.h
+	<def.h>
+	"NString.h"
+	<ctime>
+
+1475974286 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
+	<Data/NString.h>
+	<Data/Array.h>
+	<Data/Time.h>
+
+1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Math/Math.h
+	"def.h"
+
+1475822540 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
+	<def.h>
+	<Data/NString.h>
+
+1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
+	<def.h>
+	<Data/NString.h>
+	<Management/NException.h>
+	"NStream.h"
+	<stdio.h>
+
+1470482222 /usr/include/stdio.h
+	<features.h>
+	<stddef.h>
+	<bits/types.h>
+	<libio.h>
+	<stdarg.h>
+	<bits/stdio_lim.h>
+	<bits/sys_errlist.h>
+	<getopt.h>
+	<bits/stdio.h>
+	<bits/stdio2.h>
+	<bits/stdio-ldbl.h>
+
+1470482224 /usr/include/bits/types.h
+	<features.h>
+	<bits/wordsize.h>
+	<bits/typesizes.h>
+
+1470482224 /usr/include/bits/typesizes.h
+
+1470482222 /usr/include/libio.h
+	<_G_config.h>
+	<stdarg.h>
+	<sys/cdefs.h>
+	<shlib-compat.h>
+	<bits/libio-ldbl.h>
+
+1470482222 /usr/include/_G_config.h
+	<bits/types.h>
+	<stddef.h>
+	<wchar.h>
+	<gconv.h>
+
+1470482223 /usr/include/wchar.h
+	<features.h>
+	<stdio.h>
+	<stdarg.h>
+	<bits/wchar.h>
+	<stddef.h>
+	<wctype.h>
+	<xlocale.h>
+	<xlocale.h>
+	<xlocale.h>
+	<wctype.h>
+	<bits/wchar2.h>
+	<bits/wchar-ldbl.h>
+
+1470482223 /usr/include/bits/wchar.h
+
+1470482226 /usr/include/wctype.h
+	<features.h>
+	<bits/types.h>
+	<wchar.h>
+	<endian.h>
+	<xlocale.h>
+
+1470482223 /usr/include/endian.h
+	<features.h>
+	<bits/endian.h>
+	<bits/byteswap.h>
+
+1470482223 /usr/include/bits/endian.h
+
+1470482223 /usr/include/bits/byteswap.h
+	<features.h>
+	<bits/types.h>
+	<bits/wordsize.h>
+	<bits/byteswap-16.h>
+
+1470482223 /usr/include/bits/byteswap-16.h
+
+1470482213 /usr/include/xlocale.h
+
+1470482223 /usr/include/bits/wchar2.h
+
+1470482223 /usr/include/bits/wchar-ldbl.h
+
+1470482213 /usr/include/gconv.h
+	<features.h>
+	<wchar.h>
+	<stddef.h>
+
+1470482222 /usr/include/bits/libio-ldbl.h
+
+1470482221 /usr/include/bits/stdio_lim.h
+
+1470482222 /usr/include/bits/sys_errlist.h
+
+1470482224 /usr/include/getopt.h
+	<ctype.h>
+
+1470482218 /usr/include/ctype.h
+	<features.h>
+	<bits/types.h>
+	<endian.h>
+	<xlocale.h>
+
+1470482222 /usr/include/bits/stdio.h
+
+1470482222 /usr/include/bits/stdio2.h
+
+1470482222 /usr/include/bits/stdio-ldbl.h
+
+1475974754 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
+	<NBL.h>
+
+1469952224 /usr/include/GL/glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1470482221 /usr/include/inttypes.h
+	<features.h>
+	<stdint.h>
+	<stddef.h>
+
+1470482221 /usr/include/stdint.h
+	<features.h>
+	<bits/wchar.h>
+	<bits/wordsize.h>
+
+1449371112 /usr/include/GL/glu.h
+	"glu_mangle.h"
+	<GL/gl.h>
+
+1449371112 /usr/include/GL/glu_mangle.h
+
+1475384713 /usr/include/GL/gl.h
+	"gl_mangle.h"
+	<windows.h>
+	<GL/glext.h>
+
+1475384713 /usr/include/GL/gl_mangle.h
+
+1475384713 /usr/include/GL/glext.h
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1066736514 /usr/include/GL/glut.h
+	"freeglut_std.h"
+
+1413563304 /usr/include/GL/freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1475384713 /usr/include/EGL/egl.h
+	<EGL/eglplatform.h>
+	<KHR/khrplatform.h>
+	<EGL/eglplatform.h>
+
+1475384713 /usr/include/EGL/eglplatform.h
+	<KHR/khrplatform.h>
+	<windows.h>
+	<android/native_window.h>
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<kernel/image.h>
+
+1475384713 /usr/include/KHR/khrplatform.h
+	<stdint.h>
+	<inttypes.h>
+	<stdint.h>
+
+1475645045 /usr/include/X11/Xlib.h
+	<sys/types.h>
+	<stdint.h>
+	<X11/X.h>
+	<X11/Xfuncproto.h>
+	<X11/Xosdefs.h>
+	<stddef.h>
+	<stdlib.h>
+
+1470482224 /usr/include/sys/types.h
+	<features.h>
+	<bits/types.h>
+	<time.h>
+	<stddef.h>
+	<endian.h>
+	<sys/select.h>
+	<sys/sysmacros.h>
+	<bits/pthreadtypes.h>
+
+1470482223 /usr/include/time.h
+	<features.h>
+	<stddef.h>
+	<bits/time.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<xlocale.h>
+
+1470482223 /usr/include/bits/time.h
+	<bits/types.h>
+	<bits/types.h>
+	<bits/timex.h>
+
+1470482223 /usr/include/bits/timex.h
+	<bits/types.h>
+
+1470482225 /usr/include/sys/select.h
+	<features.h>
+	<bits/types.h>
+	<bits/select.h>
+	<bits/sigset.h>
+	<time.h>
+	<bits/time.h>
+	<bits/select2.h>
+
+1470482225 /usr/include/bits/select.h
+	<bits/wordsize.h>
+
+1470482220 /usr/include/bits/sigset.h
+
+1470482225 /usr/include/bits/select2.h
+
+1470482224 /usr/include/sys/sysmacros.h
+	<features.h>
+
+1470482224 /usr/include/bits/pthreadtypes.h
+	<bits/wordsize.h>
+
+1474631804 /usr/include/X11/X.h
+	<X11/Xmd.h>
+
+1474631804 /usr/include/X11/Xmd.h
+	<sys/isa_defs.h>
+
+1474631804 /usr/include/X11/Xfuncproto.h
+
+1474631804 /usr/include/X11/Xosdefs.h
+
+1470482221 /usr/include/stdlib.h
+	<features.h>
+	<stddef.h>
+	<bits/waitflags.h>
+	<bits/waitstatus.h>
+	<xlocale.h>
+	<sys/types.h>
+	<alloca.h>
+	<bits/stdlib-bsearch.h>
+	<bits/stdlib-float.h>
+	<bits/stdlib.h>
+	<bits/stdlib-ldbl.h>
+
+1470482224 /usr/include/bits/waitflags.h
+
+1470482224 /usr/include/bits/waitstatus.h
+
+1470482221 /usr/include/alloca.h
+	<features.h>
+	<stddef.h>
+
+1470482221 /usr/include/bits/stdlib-bsearch.h
+
+1470482221 /usr/include/bits/stdlib-float.h
+
+1470482221 /usr/include/bits/stdlib.h
+
+1470482221 /usr/include/bits/stdlib-ldbl.h
+
+1475645045 /usr/include/X11/Xutil.h
+	<X11/Xlib.h>
+	<X11/keysym.h>
+
+1474631804 /usr/include/X11/keysym.h
+	<X11/keysymdef.h>
+
+1474631804 /usr/include/X11/keysymdef.h
+
+1475384713 /usr/include/GLES/gl.h
+	<GLES/glplatform.h>
+
+1475384713 /usr/include/GLES/glplatform.h
+	<KHR/khrplatform.h>
+
+1475384713 /usr/include/GLES2/gl2.h
+	<GLES2/gl2platform.h>
+	<KHR/khrplatform.h>
+
+1475384713 /usr/include/GLES2/gl2platform.h
+	<KHR/khrplatform.h>
+
+1475988023 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Float.h
+	<Data/NString.h>
+	<def.h>
+
+1475976367 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.cpp
+	"Point.h"
+
+1475976327 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.h
+	<nedef.h>
+
+1475986981 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.cpp
+	"VideoMode.h"
+
+1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.h
+	<nedef.h>
+
