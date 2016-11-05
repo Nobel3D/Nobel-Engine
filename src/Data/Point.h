@@ -30,6 +30,7 @@ NE_NAMESTART
 
         Point3 operator=(Point3 &addMe);
         bool operator==(Point3 &addMe);
+        bool operator!=(Point3 &addMe);
     };
 
 NE_NAMECLOSE

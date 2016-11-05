@@ -2,122 +2,209 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-
+#include <fstream>
+#include <vector>
+#include <string.h>
 // Include GLEW
 #include <GL/glew.h>
-#include <GL/glut.h>
 #include <NobelEngine.h>
 
 using namespace NobelLib;
 using namespace NobelEngine;
 
 Form* form;
+Triangles tri( new Point3(-1.0f, -1.0f, 0.0f),
+               new Point3(1.0f, -1.0f, 0.0f),
+               new Point3(0.0f,  1.0f, 0.0f));
 
-void DrawNet(GLfloat size, GLint LinesX, GLint LinesZ)
+Shader vertex;
+Shader fragment;
+
+
+GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path);
+
+int fps = 0;
+
+void* timer (void* null)
 {
-	glBegin(GL_LINES);
-	for (int xc = 0; xc < LinesX; xc++)
-	{
-		glVertex3f(	-size / 2.0 + xc / (GLfloat)(LinesX-1)*size,
-					0.0,
-					size / 2.0);
-		glVertex3f(	-size / 2.0 + xc / (GLfloat)(LinesX-1)*size,
-					0.0,
-					size / -2.0);
-	}
-	for (int zc = 0; zc < LinesX; zc++)
-	{
-		glVertex3f(	size / 2.0,
-					0.0,
-					-size / 2.0 + zc / (GLfloat)(LinesZ-1)*size);
-		glVertex3f(	size / -2.0,
-					0.0,
-					-size / 2.0 + zc / (GLfloat)(LinesZ-1)*size);
-	}
-	glEnd();
-}
+    Timer tm;
+    tm.Start(1000);
+    while(true)
+    {
+        if(tm.getTime() > 1000)
+        {
+            std::cout << "FPS: " << form->form_fps << std::endl;
+            form->form_fps = 0;
+            tm.Reset();
+        }
+    }
 
-
-void Display(void)
-{
-	glClear(GL_COLOR_BUFFER_BIT);
-	glLoadIdentity();
-
-	//Draw the "world" (which consists of six "nets" forming a cuboid
-	glTranslatef(0.0,-0.5,-6.0);
-
-	glScalef(3.0,1.0,3.0);
-
-	GLfloat size = 2.0;
-	GLint LinesX = 30;
-	GLint LinesZ = 30;
-
-	GLfloat halfsize = size / 2.0;
-	glColor3f(1.0,1.0,1.0);
-	glPushMatrix();
-		glTranslatef(0.0,-halfsize ,0.0);
-		DrawNet(size,LinesX,LinesZ);
-		glTranslatef(0.0,size,0.0);
-		DrawNet(size,LinesX,LinesZ);
-	glPopMatrix();
-	glColor3f(0.0,0.0,1.0);
-	glPushMatrix();
-		glTranslatef(-halfsize,0.0,0.0);
-		glRotatef(90.0,0.0,0.0,halfsize);
-		DrawNet(size,LinesX,LinesZ);
-		glTranslatef(0.0,-size,0.0);
-		DrawNet(size,LinesX,LinesZ);
-	glPopMatrix();
-	glColor3f(1.0,0.0,0.0);
-	glPushMatrix();
-		glTranslatef(0.0,0.0,-halfsize);
-		glRotatef(90.0,halfsize,0.0,0.0);
-		DrawNet(size,LinesX,LinesZ);
-		glTranslatef(0.0,size,0.0);
-		DrawNet(size,LinesX,LinesZ);
-	glPopMatrix();
-
-
-	//finish rendering:
-	glFlush();
-	glutSwapBuffers();
-
-}
-
-
-
-//handles the key down events
-void KeyDown(unsigned char key, int x, int y)
-{
-	switch (key)
-	{
-	case 'q':		//ESC
-		exit(0);
-		break;
-    case 'f':
-        form->FullScreen();
-    case 'g':
-        form->Windowed(Resolution(800,600),Point(100,100));
-
-	}
+    return nullptr;
 }
 
 int main(int argc, char** argv)
 {
     Program("Nobel OpenGL Engine", "0.01", argc, argv);
+
+    Thread thread;
+    thread.Start(nullptr, timer ,nullptr);
+
     form = new Form();
 
     form->Init();
-    form->Windowed(Resolution(800,600),Point(100,100));
-    form->Show();
-//    form->FullScreen();
-    glutKeyboardFunc(KeyDown);
-    glutDisplayFunc(Display);
 
-    fwrite("bella\n", 1, 6, stderr);
-    glutMainLoop();
+    form->Show(Resolution(800,600));
 
-    glutDestroyWindow(1);
+    // Dark blue background
+	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+
+	ShaderProgram shapro;
+
+	NFile* _vertex = new NFile("SimpleVertexShader.vertexshader");
+    NFile* _fragment = new NFile("SimpleFragmentShader.fragmentshader");
+
+    _vertex->Open(Reading);
+    _fragment->Open(Reading);
+
+    vertex.Init(ShaderType::Vertex);
+    fragment.Init(ShaderType::Fragment);
+
+    vertex.Load(_vertex->ReadAll());
+    fragment.Load(_fragment->ReadAll());
+
+    vertex.Compile();
+    fragment.Compile();
+
+    shapro.Attach(vertex); shapro.Attach(fragment);
+    shapro.Link();
+
+//	GLuint programID = LoadShaders(_vertex->ReadAll(), _fragment->ReadAll() );
+
+    tri.Load();
+
+	do{
+		// Clear the screen
+		glClear( GL_COLOR_BUFFER_BIT );
+
+		shapro.Use();
+
+		tri.Draw();
+
+		form->Swap();
+
+	} // Check if the ESC key was pressed or the window was closed
+	while( form->Frame() );
+
+    shapro.Disable();
+
+	tri.Destroy();
 
     return 0;
 }
+
+#define COMPARE_FAIL(a,b) { fwrite("\n---", 4 , 1 , stdout); fwrite(&a, 1 , 1 , stdout); fwrite("\n+++", 4 , 1 , stdout); fwrite(&b, 1 , 1 , stdout); }
+NString compare(const char* a, const char* b)
+{
+    int i = 0;
+    while(a[i] != '\0' || b[i] != '\0')
+    {
+        if(a[i] == b[i])
+            fwrite(&a[i], 1, 1, stdout);
+        else
+            COMPARE_FAIL(a[i], b[i])
+        i++;
+    }
+}
+
+GLuint LoadShaders(const char * vertex_file,const char * fragment_file){
+
+	// Create the shaders
+	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+
+	// Read the Vertex Shader code from the file
+	std::string VertexShaderCode;
+	std::ifstream VertexShaderStream("SimpleVertexShader.vertexshader", std::ios::in);
+	if(VertexShaderStream.is_open()){
+		std::string Line = "";
+		while(getline(VertexShaderStream, Line))
+			VertexShaderCode += "\n" + Line;
+		VertexShaderStream.close();
+	}else{
+		getchar();
+		return 0;
+	}
+
+	// Read the Fragment Shader code from the file
+	std::string FragmentShaderCode;
+	std::ifstream FragmentShaderStream("SimpleFragmentShader.fragmentshader", std::ios::in);
+	if(FragmentShaderStream.is_open()){
+		std::string Line = "";
+		while(getline(FragmentShaderStream, Line))
+			FragmentShaderCode += "\n" + Line;
+		FragmentShaderStream.close();
+	}
+
+	GLint Result = GL_FALSE;
+	int InfoLogLength;
+
+
+	// Compile Vertex Shader
+	char const * VertexSourcePointer = vertex_file;
+	glShaderSource(VertexShaderID, 1, &VertexSourcePointer , NULL);
+	glCompileShader(VertexShaderID);
+
+	// Check Vertex Shader
+	glGetShaderiv(VertexShaderID, GL_COMPILE_STATUS, &Result);
+	glGetShaderiv(VertexShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+	if ( InfoLogLength > 0 ){
+		std::vector<char> VertexShaderErrorMessage(InfoLogLength+1);
+		glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
+		printf("%s\n", &VertexShaderErrorMessage[0]);
+	}
+
+
+
+	// Compile Fragment Shader
+	char const * FragmentSourcePointer = fragment_file;
+	glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer , NULL);
+	glCompileShader(FragmentShaderID);
+
+	// Check Fragment Shader
+	glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &Result);
+	glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+	if ( InfoLogLength > 0 ){
+		std::vector<char> FragmentShaderErrorMessage(InfoLogLength+1);
+		glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
+		printf("%s\n", &FragmentShaderErrorMessage[0]);
+	}
+
+
+
+	// Link the program
+	printf("Linking program\n");
+	GLuint ProgramID = glCreateProgram();
+	glAttachShader(ProgramID, VertexShaderID);
+	glAttachShader(ProgramID, FragmentShaderID);
+	glLinkProgram(ProgramID);
+
+	// Check the program
+	glGetProgramiv(ProgramID, GL_LINK_STATUS, &Result);
+	glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+	if ( InfoLogLength > 0 ){
+		std::vector<char> ProgramErrorMessage(InfoLogLength+1);
+		glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
+		printf("%s\n", &ProgramErrorMessage[0]);
+	}
+
+
+	glDetachShader(ProgramID, VertexShaderID);
+	glDetachShader(ProgramID, FragmentShaderID);
+
+	glDeleteShader(VertexShaderID);
+	glDeleteShader(FragmentShaderID);
+
+	return ProgramID;
+}
+
+

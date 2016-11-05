@@ -1,22 +1,27 @@
 # depslib dependency file v1.0
-1475990246 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/test/main.cpp
+1478234324 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/test/main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
+	<fstream>
+	<vector>
+	<string.h>
 	<GL/glew.h>
-	<GL/glut.h>
 	<NobelEngine.h>
 
-1475988168 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/NobelEngine.h
+1477320013 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/NobelEngine.h
 	"nedef.h"
 	"Data/Point.h"
 	"Data/VideoMode.h"
+	"Data/Shader.h"
 	"Graphics/Form.h"
+	"Object/Triangles.h"
 
-1475974754 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
+1478305500 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
 	<NBL.h>
+	<stdio.h>
 
-1475975871 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
+1476869638 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
 	"Data/Memory.h"
 	"Data/NString.h"
 	"Data/Array.h"
@@ -24,9 +29,11 @@
 	"Data/Translate.h"
 	"Data/Time.h"
 	"Data/Float.h"
+	"Data/Timer.h"
 	"Management/Program.h"
 	"Management/Log.h"
 	"Management/NException.h"
+	"Management/Thread.h"
 	"Math/Math.h"
 	"Stream/NStream.h"
 	"Stream/NFile.h"
@@ -34,11 +41,11 @@
 1475821509 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Memory.h
 	<def.h>
 
-1475504246 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
+1478306599 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
 	<cstddef>
 	<assert.h>
 
-1475824086 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
+1478188138 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
 	"List.h"
 	"Array.h"
 	"def.h"
@@ -46,7 +53,7 @@
 1475825826 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/List.h
 	"Array.h"
 
-1475871703 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
+1477720982 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
 	"Memory.h"
 
 1475973474 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Translate.h
@@ -59,7 +66,7 @@
 	<Data/NString.h>
 	"Log.h"
 
-1473415694 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Log.h
+1478305617 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Log.h
 	<def.h>
 	<Data/Time.h>
 
@@ -68,7 +75,7 @@
 	"NString.h"
 	<ctime>
 
-1475974286 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
+1478151035 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
 	<Data/NString.h>
 	<Data/Array.h>
 	<Data/Time.h>
@@ -76,29 +83,51 @@
 1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Math/Math.h
 	"def.h"
 
-1475822540 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
+1478236589 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
 	<def.h>
 	<Data/NString.h>
 
-1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
+1478234199 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
 	<def.h>
 	<Data/NString.h>
 	<Management/NException.h>
 	"NStream.h"
-	<stdio.h>
 
-1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.h
+1476887082 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.h
 	<nedef.h>
 	<Data/Point.h>
 	<Data/VideoMode.h>
+	<Data/OpenGL.h>
 
-1475988023 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Float.h
+1476075837 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Float.h
 	<Data/NString.h>
 	<def.h>
 
-1475976327 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.h
+1476075347 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.h
 	<nedef.h>
 
 1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.h
+	<nedef.h>
+
+1476574044 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Object/Triangles.h
+	<nedef.h>
+	<Graphics/NObject.h>
+	<Data/Point.h>
+
+1476076180 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/NObject.h
+	<nedef.h>
+
+1476859935 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/OpenGL.h
+	<GL/glew.h>
+	<GLFW/glfw3.h>
+
+1476886269 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Timer.h
+	<def.h>
+	<Management/Thread.h>
+
+1476884960 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Thread.h
+	<def.h>
+
+1478192700 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Shader.h
 	<nedef.h>
 

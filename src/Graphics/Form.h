@@ -3,6 +3,7 @@
 #include <nedef.h>
 #include <Data/Point.h>
 #include <Data/VideoMode.h>
+#include <Data/OpenGL.h>
 
 NL_NAMEUSING
 
@@ -14,7 +15,7 @@ NE_NAMESTART
 
         Point* form_pPosition;
         //form
-        int form_ID;
+        Window* form;
         bool form_bActive;
         NString form_sTitle;
         static bool form_bExit;
@@ -25,13 +26,16 @@ NE_NAMESTART
         ~Form();
 
         bool Init();
+        bool Init(NString _title);
 
-        int Show();
+        int Show(Resolution _res);
+        bool Frame();
         bool FullScreen();
         bool Windowed(Resolution _res, Point _position);
-        bool Windowed(Resolution _res);
         static void Reshape(int x, int y);
+        void Swap();
 
+        int form_fps=0;
     };
 
 

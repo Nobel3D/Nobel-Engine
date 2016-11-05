@@ -1,15 +1,14 @@
 # depslib dependency file v1.0
-1475990282 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.cpp
+1477720181 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.cpp
 	"Form.h"
-	<GL/glew.h>
-	<GL/glut.h>
 
-1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.h
+1476887082 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Form.h
 	<nedef.h>
 	<Data/Point.h>
 	<Data/VideoMode.h>
+	<Data/OpenGL.h>
 
-1475975871 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
+1476869638 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
 	"Data/Memory.h"
 	"Data/NString.h"
 	"Data/Array.h"
@@ -17,9 +16,11 @@
 	"Data/Translate.h"
 	"Data/Time.h"
 	"Data/Float.h"
+	"Data/Timer.h"
 	"Management/Program.h"
 	"Management/Log.h"
 	"Management/NException.h"
+	"Management/Thread.h"
 	"Math/Math.h"
 	"Stream/NStream.h"
 	"Stream/NFile.h"
@@ -27,7 +28,7 @@
 1475821509 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Memory.h
 	<def.h>
 
-1475504246 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
+1478306599 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
 	<cstddef>
 	<assert.h>
 
@@ -56,7 +57,7 @@
 
 1470482268 /usr/include/gnu/stubs-64.h
 
-1475824086 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
+1478188138 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
 	"List.h"
 	"Array.h"
 	"def.h"
@@ -64,7 +65,7 @@
 1475825826 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/List.h
 	"Array.h"
 
-1475871703 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
+1477720982 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
 	"Memory.h"
 
 1475973474 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Translate.h
@@ -77,7 +78,7 @@
 	<Data/NString.h>
 	"Log.h"
 
-1473415694 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Log.h
+1478305617 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Log.h
 	<def.h>
 	<Data/Time.h>
 
@@ -86,7 +87,7 @@
 	"NString.h"
 	<ctime>
 
-1475974286 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
+1478151035 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
 	<Data/NString.h>
 	<Data/Array.h>
 	<Data/Time.h>
@@ -94,16 +95,15 @@
 1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Math/Math.h
 	"def.h"
 
-1475822540 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
+1478236589 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
 	<def.h>
 	<Data/NString.h>
 
-1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
+1478234199 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
 	<def.h>
 	<Data/NString.h>
 	<Management/NException.h>
 	"NStream.h"
-	<stdio.h>
 
 1470482222 /usr/include/stdio.h
 	<features.h>
@@ -208,8 +208,9 @@
 
 1470482222 /usr/include/bits/stdio-ldbl.h
 
-1475974754 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
+1478305500 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
 	<NBL.h>
+	<stdio.h>
 
 1469952224 /usr/include/GL/glew.h
 	<stddef.h>
@@ -236,14 +237,14 @@
 
 1449371112 /usr/include/GL/glu_mangle.h
 
-1475384713 /usr/include/GL/gl.h
+1475830899 /usr/include/GL/gl.h
 	"gl_mangle.h"
 	<windows.h>
 	<GL/glext.h>
 
-1475384713 /usr/include/GL/gl_mangle.h
+1475830899 /usr/include/GL/gl_mangle.h
 
-1475384713 /usr/include/GL/glext.h
+1475830899 /usr/include/GL/glext.h
 	<windows.h>
 	<stddef.h>
 	<inttypes.h>
@@ -280,7 +281,7 @@
 	<X11/Xutil.h>
 	<kernel/image.h>
 
-1475384713 /usr/include/KHR/khrplatform.h
+1475830899 /usr/include/KHR/khrplatform.h
 	<stdint.h>
 	<inttypes.h>
 	<stdint.h>
@@ -393,32 +394,235 @@
 
 1474631804 /usr/include/X11/keysymdef.h
 
-1475384713 /usr/include/GLES/gl.h
+1475830899 /usr/include/GLES/gl.h
 	<GLES/glplatform.h>
 
-1475384713 /usr/include/GLES/glplatform.h
+1475830899 /usr/include/GLES/glplatform.h
 	<KHR/khrplatform.h>
 
-1475384713 /usr/include/GLES2/gl2.h
+1475830899 /usr/include/GLES2/gl2.h
 	<GLES2/gl2platform.h>
 	<KHR/khrplatform.h>
 
-1475384713 /usr/include/GLES2/gl2platform.h
+1475830899 /usr/include/GLES2/gl2platform.h
 	<KHR/khrplatform.h>
 
-1475988023 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Float.h
+1476075837 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Float.h
 	<Data/NString.h>
 	<def.h>
 
-1475976367 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.cpp
+1476075347 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.cpp
 	"Point.h"
 
-1475976327 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.h
+1476075347 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Point.h
 	<nedef.h>
 
 1475986981 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.cpp
 	"VideoMode.h"
 
 1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.h
+	<nedef.h>
+
+1477719790 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/NObject.cpp
+	"NObject.h"
+	<Data/OpenGL.h>
+
+1476076180 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/NObject.h
+	<nedef.h>
+
+1476899677 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Object/Triangles.cpp
+	"Triangles.h"
+	<GL/glew.h>
+
+1476574044 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Object/Triangles.h
+	<nedef.h>
+	<Graphics/NObject.h>
+	<Data/Point.h>
+
+1476859935 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/OpenGL.h
+	<GL/glew.h>
+	<GLFW/glfw3.h>
+
+1471519947 /usr/include/GLFW/glfw3.h
+	<stddef.h>
+	<stdint.h>
+	<OpenGL/gl3.h>
+	<OpenGL/gl3ext.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/glcorearb.h>
+	<GLES/gl.h>
+	<GLES/glext.h>
+	<GLES2/gl2.h>
+	<GLES2/gl2ext.h>
+	<GLES3/gl3.h>
+	<GLES2/gl2ext.h>
+	<GLES3/gl31.h>
+	<GLES2/gl2ext.h>
+	<vulkan/vulkan.h>
+	<GL/gl.h>
+	<GL/glext.h>
+	<GL/glu.h>
+
+1475830899 /usr/include/GL/glcorearb.h
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1475830899 /usr/include/GLES/glext.h
+
+1475830899 /usr/include/GLES2/gl2ext.h
+
+1475830899 /usr/include/GLES3/gl3.h
+	<GLES3/gl3platform.h>
+	<KHR/khrplatform.h>
+
+1475830899 /usr/include/GLES3/gl3platform.h
+	<KHR/khrplatform.h>
+
+1475830899 /usr/include/GLES3/gl31.h
+	<GLES3/gl3platform.h>
+	<KHR/khrplatform.h>
+
+1477639842 /usr/include/vulkan/vulkan.h
+	"vk_platform.h"
+	<X11/Xlib.h>
+	<xcb/xcb.h>
+	<wayland-client.h>
+	<mir_toolkit/client_types.h>
+	<android/native_window.h>
+	<windows.h>
+
+1477639842 /usr/include/vulkan/vk_platform.h
+	<stddef.h>
+	<stdint.h>
+	<android/native_window.h>
+	<mir_toolkit/client_types.h>
+	<wayland-client.h>
+	<windows.h>
+	<X11/Xlib.h>
+	<xcb/xcb.h>
+
+1474451528 /usr/include/wayland-client.h
+	"wayland-client-core.h"
+	"wayland-client-protocol.h"
+
+1474451528 /usr/include/wayland-client-core.h
+	<stdint.h>
+	"wayland-util.h"
+	"wayland-version.h"
+
+1474451528 /usr/include/wayland-util.h
+	<math.h>
+	<stddef.h>
+	<inttypes.h>
+	<stdarg.h>
+
+1470482219 /usr/include/math.h
+	<features.h>
+	<bits/math-vector.h>
+	<bits/huge_val.h>
+	<bits/huge_valf.h>
+	<bits/huge_vall.h>
+	<bits/inf.h>
+	<bits/nan.h>
+	<bits/mathdef.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathinline.h>
+	<bits/math-finite.h>
+
+1470482219 /usr/include/bits/math-vector.h
+	<bits/libm-simd-decl-stubs.h>
+
+1470482219 /usr/include/bits/libm-simd-decl-stubs.h
+
+1470482219 /usr/include/bits/huge_val.h
+	<endian.h>
+
+1470482219 /usr/include/bits/huge_valf.h
+
+1470482219 /usr/include/bits/huge_vall.h
+
+1470482219 /usr/include/bits/inf.h
+
+1470482219 /usr/include/bits/nan.h
+	<endian.h>
+
+1470482219 /usr/include/bits/mathdef.h
+
+1470482219 /usr/include/bits/mathcalls.h
+
+1470482219 /usr/include/bits/mathinline.h
+
+1470482219 /usr/include/bits/math-finite.h
+
+1474451528 /usr/include/wayland-version.h
+
+1474451528 /usr/include/wayland-client-protocol.h
+	<stdint.h>
+	<stddef.h>
+	"wayland-client.h"
+
+1463942673 /usr/include/xcb/xcb.h
+	<sys/types.h>
+	<inttypes.h>
+	<stdint.h>
+	<sys/uio.h>
+	"xcb_windefs.h"
+	<pthread.h>
+	"xproto.h"
+
+1470482225 /usr/include/sys/uio.h
+	<features.h>
+	<sys/types.h>
+	<bits/uio.h>
+
+1470482225 /usr/include/bits/uio.h
+	<sys/types.h>
+
+1470482260 /usr/include/pthread.h
+	<features.h>
+	<endian.h>
+	<sched.h>
+	<time.h>
+	<bits/pthreadtypes.h>
+	<bits/setjmp.h>
+	<bits/wordsize.h>
+
+1470482224 /usr/include/sched.h
+	<features.h>
+	<bits/types.h>
+	<stddef.h>
+	<time.h>
+	<bits/sched.h>
+
+1470482224 /usr/include/bits/sched.h
+
+1470482220 /usr/include/bits/setjmp.h
+	<bits/wordsize.h>
+
+1463942673 /usr/include/xcb/xproto.h
+	"xcb.h"
+
+1476886269 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Timer.h
+	<def.h>
+	<Management/Thread.h>
+
+1476884960 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Thread.h
+	<def.h>
+
+1478305302 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Shader.cpp
+	"Shader.h"
+	<nedef.h>
+	<GL/glew.h>
+
+1478192700 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Shader.h
 	<nedef.h>
 

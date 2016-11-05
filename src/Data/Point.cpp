@@ -53,4 +53,9 @@ bool Point3::operator==(Point3 &addMe)
 	return this->x == addMe.x && this->y == addMe.y && this->z == addMe.z;
 }
 
+bool Point3::operator!=(Point3 &addMe)
+{
+    return this->x != addMe.x || this->y != addMe.y || this->z != addMe.z;
+}
+
 NE_NAMECLOSE

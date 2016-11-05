@@ -33,6 +33,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
+			<Add option="-g" />
 			<Add directory="src" />
 			<Add directory="../Nobel-Base/src" />
 			<Add directory="/usr/include" />
@@ -40,13 +41,20 @@
 		<Linker>
 			<Add library="../Nobel-Base/bin/libNBL.a" />
 		</Linker>
+		<Unit filename="src/Data/OpenGL.h" />
 		<Unit filename="src/Data/Point.cpp" />
 		<Unit filename="src/Data/Point.h" />
+		<Unit filename="src/Data/Shader.cpp" />
+		<Unit filename="src/Data/Shader.h" />
 		<Unit filename="src/Data/VideoMode.cpp" />
 		<Unit filename="src/Data/VideoMode.h" />
 		<Unit filename="src/Graphics/Form.cpp" />
 		<Unit filename="src/Graphics/Form.h" />
+		<Unit filename="src/Graphics/NObject.cpp" />
+		<Unit filename="src/Graphics/NObject.h" />
 		<Unit filename="src/NobelEngine.h" />
+		<Unit filename="src/Object/Triangles.cpp" />
+		<Unit filename="src/Object/Triangles.h" />
 		<Unit filename="src/nedef.h" />
 		<Extensions>
 			<code_completion />
