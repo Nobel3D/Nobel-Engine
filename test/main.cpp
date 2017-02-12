@@ -58,7 +58,7 @@ int main(int argc, char** argv)
     // Dark blue background
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
-	ShaderProgram shapro;
+/*	ShaderProgram shapro;
 
 	NFile* _vertex = new NFile("SimpleVertexShader.vertexshader");
     NFile* _fragment = new NFile("SimpleFragmentShader.fragmentshader");
@@ -78,24 +78,44 @@ int main(int argc, char** argv)
     shapro.Attach(vertex); shapro.Attach(fragment);
     shapro.Link();
 
-//	GLuint programID = LoadShaders(_vertex->ReadAll(), _fragment->ReadAll() );
+	GLuint programID = LoadShaders(_vertex->ReadAll(), _fragment->ReadAll() );
 
+*/
+/*
+	GLuint VertexArrayID;
+	glGenVertexArrays(1, &VertexArrayID);
+    glBindVertexArray(VertexArrayID);
+
+	static const GLfloat g_vertex_buffer_data[] = {
+   -1.0f, -1.0f, 0.0f,
+   1.0f, -1.0f, 0.0f,
+   0.0f,  1.0f, 0.0f,
+};
+
+// This will identify our vertex buffer
+GLuint vertexbuffer;
+// Generate 1 buffer, put the resulting identifier in vertexbuffer
+glGenBuffers(1, &vertexbuffer);
+// The following commands will talk about our 'vertexbuffer' buffer
+glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+// Give our vertices to OpenGL.
+glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+*/
     tri.Load();
+
 
 	do{
 		// Clear the screen
 		glClear( GL_COLOR_BUFFER_BIT );
 
-		shapro.Use();
-
-		tri.Draw();
-
+//		shapro.Use();
+        tri.Draw();
 		form->Swap();
 
 	} // Check if the ESC key was pressed or the window was closed
 	while( form->Frame() );
 
-    shapro.Disable();
+//    shapro.Disable();
 
 	tri.Destroy();
 

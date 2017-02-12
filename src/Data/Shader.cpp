@@ -35,8 +35,9 @@ void Shader::Load(const NString& code)
     ASSERT(!code.Null());
 
     const char* _code = code;
+    int length = code.getLength();
     // Associate the source with the shader id
-    glShaderSource(sha_id, 1, &_code, NULL);
+    glShaderSource(sha_id, 1, &_code, &length);
 
 }
 

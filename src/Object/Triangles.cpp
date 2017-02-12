@@ -5,7 +5,7 @@
 NL_NAMEUSING
 NE_NAMEUSING
 
-Triangles::Triangles(Point3* _1, Point3* _2, Point3* _3) : NObject()
+Triangles::Triangles(Point3* _1, Point3* _2, Point3* _3) : Drawable()
 {
 	ASSERT (_1 != _2 && _1 != _3 && _2 != _3);
 	geo_pTriangle1 = _1;
@@ -22,20 +22,21 @@ Triangles::~Triangles()
 
 void Triangles::Draw()
 {
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, gl_uVbo);
+    // 1rst attribute buffer : vertices
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, gl_uVbo);
+    glVertexAttribPointer(
+       0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+       3,                  // size
+       GL_FLOAT,           // type
+       GL_FALSE,           // normalized?
+       0,                  // stride
+       (void*)0            // array buffer offset
+    );
+    // Draw the triangle !
+    glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
+    glDisableVertexAttribArray(0);
 
-	glVertexAttribPointer(
-		0,                           // attribute. No particular reason for 1, but must match the layout in the shader.
-		3,                                // size
-		GL_FLOAT,                         // type
-		GL_FALSE,                         // normalized?
-		0,                                // stride
-		(void*)0                          // array buffer offset
-		);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl_uIbo);
-	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, (void*)0);
 }
 
 void Triangles::Load()
@@ -50,15 +51,13 @@ void Triangles::Load()
 		geo_pTriangle3->x, geo_pTriangle3->y, geo_pTriangle3->z
 	};
 
-	const GLushort triangleIndex[] = {0,1,2};
+    // Generate 1 buffer, put the resulting identifier in gl_uVbo
+    glGenBuffers(1, &gl_uVbo);
+    // The following commands will talk about our 'gl_uVbo' buffer
+    glBindBuffer(GL_ARRAY_BUFFER, gl_uVbo);
+    // Give our vertices to OpenGL.
+    glBufferData(GL_ARRAY_BUFFER, sizeof(triangleVertex), triangleVertex, GL_STATIC_DRAW);
 
-	gl_aIndex = triangleIndex;
-	gl_aVertex = triangleVertex;
-	gl_iVertex = 9;
-	gl_iIndex = 3;
-
-	gl_genBuffer();
-	gl_bLoaded = true;
 }
 
 void Triangles::Destroy()

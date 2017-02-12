@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1478234324 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/test/main.cpp
+1480419188 source:/mnt/data/luca/Programmazione/proj/Nobel-Engine/test/main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -17,11 +17,11 @@
 	"Graphics/Form.h"
 	"Object/Triangles.h"
 
-1478305500 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
+1480314266 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/nedef.h
 	<NBL.h>
 	<stdio.h>
 
-1476869638 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
+1478938249 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/NBL.h
 	"Data/Memory.h"
 	"Data/NString.h"
 	"Data/Array.h"
@@ -38,22 +38,24 @@
 	"Stream/NStream.h"
 	"Stream/NFile.h"
 
-1475821509 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Memory.h
+1479047242 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Memory.h
 	<def.h>
 
-1478306599 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
+1478973255 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/def.h
 	<cstddef>
 	<assert.h>
+	<stdint-gcc.h>
 
-1478188138 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
+1479046698 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/NString.h
 	"List.h"
 	"Array.h"
+	"Memory.h"
 	"def.h"
 
-1475825826 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/List.h
+1478944687 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/List.h
 	"Array.h"
 
-1477720982 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
+1480601674 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Array.h
 	"Memory.h"
 
 1475973474 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Data/Translate.h
@@ -75,7 +77,7 @@
 	"NString.h"
 	<ctime>
 
-1478151035 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
+1478972095 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Management/Program.h
 	<Data/NString.h>
 	<Data/Array.h>
 	<Data/Time.h>
@@ -83,11 +85,11 @@
 1475446796 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Math/Math.h
 	"def.h"
 
-1478236589 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
+1479310091 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
 	<def.h>
 	<Data/NString.h>
 
-1478234199 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
+1479154433 /mnt/data/luca/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
 	<def.h>
 	<Data/NString.h>
 	<Management/NException.h>
@@ -109,9 +111,9 @@
 1475990240 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.h
 	<nedef.h>
 
-1476574044 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Object/Triangles.h
+1479046446 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Object/Triangles.h
 	<nedef.h>
-	<Graphics/NObject.h>
+	<Graphics/Draw.h>
 	<Data/Point.h>
 
 1476076180 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/NObject.h
@@ -130,4 +132,143 @@
 
 1478192700 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Data/Shader.h
 	<nedef.h>
+
+1480601552 /mnt/data/luca/Programmazione/proj/Nobel-Engine/src/Graphics/Draw.h
+	<nedef.h>
+	<Data/Point.h>
+
+1486824295 source:/mnt/data/Programmazione/proj/Nobel-Engine/test/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<vector>
+	<string.h>
+	<GL/glew.h>
+	<NobelEngine.h>
+
+1477320013 /mnt/data/Programmazione/proj/Nobel-Engine/src/NobelEngine.h
+	"nedef.h"
+	"Data/Point.h"
+	"Data/VideoMode.h"
+	"Data/Shader.h"
+	"Graphics/Form.h"
+	"Object/Triangles.h"
+
+1480314266 /mnt/data/Programmazione/proj/Nobel-Engine/src/nedef.h
+	<NBL.h>
+	<stdio.h>
+
+1478938249 /mnt/data/Programmazione/proj/Nobel-Base/src/NBL.h
+	"Data/Memory.h"
+	"Data/NString.h"
+	"Data/Array.h"
+	"Data/List.h"
+	"Data/Translate.h"
+	"Data/Time.h"
+	"Data/Float.h"
+	"Data/Timer.h"
+	"Management/Program.h"
+	"Management/Log.h"
+	"Management/NException.h"
+	"Management/Thread.h"
+	"Math/Math.h"
+	"Stream/NStream.h"
+	"Stream/NFile.h"
+
+1479047242 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/Memory.h
+	<def.h>
+
+1478973255 /mnt/data/Programmazione/proj/Nobel-Base/src/def.h
+	<cstddef>
+	<assert.h>
+	<stdint-gcc.h>
+
+1479046698 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/NString.h
+	"List.h"
+	"Array.h"
+	"Memory.h"
+	"def.h"
+
+1478944687 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/List.h
+	"Array.h"
+
+1480601674 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/Array.h
+	"Memory.h"
+
+1475973474 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/Translate.h
+	<def.h>
+	<Data/Array.h>
+	<Management/NException.h>
+
+1473415694 /mnt/data/Programmazione/proj/Nobel-Base/src/Management/NException.h
+	<def.h>
+	<Data/NString.h>
+	"Log.h"
+
+1478305617 /mnt/data/Programmazione/proj/Nobel-Base/src/Management/Log.h
+	<def.h>
+	<Data/Time.h>
+
+1473415694 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/Time.h
+	<def.h>
+	"NString.h"
+	<ctime>
+
+1476075837 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/Float.h
+	<Data/NString.h>
+	<def.h>
+
+1476886269 /mnt/data/Programmazione/proj/Nobel-Base/src/Data/Timer.h
+	<def.h>
+	<Management/Thread.h>
+
+1476884960 /mnt/data/Programmazione/proj/Nobel-Base/src/Management/Thread.h
+	<def.h>
+
+1478972095 /mnt/data/Programmazione/proj/Nobel-Base/src/Management/Program.h
+	<Data/NString.h>
+	<Data/Array.h>
+	<Data/Time.h>
+
+1475446796 /mnt/data/Programmazione/proj/Nobel-Base/src/Math/Math.h
+	"def.h"
+
+1479310091 /mnt/data/Programmazione/proj/Nobel-Base/src/Stream/NStream.h
+	<def.h>
+	<Data/NString.h>
+
+1479154433 /mnt/data/Programmazione/proj/Nobel-Base/src/Stream/NFile.h
+	<def.h>
+	<Data/NString.h>
+	<Management/NException.h>
+	"NStream.h"
+
+1476075347 /mnt/data/Programmazione/proj/Nobel-Engine/src/Data/Point.h
+	<nedef.h>
+
+1475990240 /mnt/data/Programmazione/proj/Nobel-Engine/src/Data/VideoMode.h
+	<nedef.h>
+
+1478192700 /mnt/data/Programmazione/proj/Nobel-Engine/src/Data/Shader.h
+	<nedef.h>
+
+1476887082 /mnt/data/Programmazione/proj/Nobel-Engine/src/Graphics/Form.h
+	<nedef.h>
+	<Data/Point.h>
+	<Data/VideoMode.h>
+	<Data/OpenGL.h>
+
+1476859935 /mnt/data/Programmazione/proj/Nobel-Engine/src/Data/OpenGL.h
+	<GL/glew.h>
+	<GLFW/glfw3.h>
+
+1479046446 /mnt/data/Programmazione/proj/Nobel-Engine/src/Object/Triangles.h
+	<nedef.h>
+	<Graphics/Draw.h>
+	<Data/Point.h>
+
+1486824556 /mnt/data/Programmazione/proj/Nobel-Engine/src/Graphics/Draw.h
+	<nedef.h>
+	<Data/Point.h>
 

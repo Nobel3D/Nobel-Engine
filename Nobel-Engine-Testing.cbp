@@ -31,17 +31,22 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
+			<Add option="-g" />
 			<Add directory="src" />
 			<Add directory="../Nobel-Base/src" />
 		</Compiler>
 		<Linker>
-			<Add library="../../../../../../home/luca/Programmazione/proj/Nobel-Base/bin/libNBL.a" />
 			<Add library="/usr/lib/libGLEW.so" />
 			<Add library="/usr/lib/libglut.so" />
 			<Add library="/usr/lib/libGL.so" />
 			<Add library="bin/Debug/libNobel-Engine.a" />
 			<Add library="/usr/lib/libGLU.so" />
+			<Add library="/usr/lib/libglfw.so.3" />
+			<Add library="/usr/lib/libpthread.so" />
+			<Add library="../Nobel-Base/bin/libNBL.a" />
 		</Linker>
+		<Unit filename="SimpleFragmentShader.fragmentshader" />
+		<Unit filename="SimpleVertexShader.vertexshader" />
 		<Unit filename="test/main.cpp" />
 		<Extensions>
 			<code_completion />

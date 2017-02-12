@@ -48,10 +48,12 @@
 		<Unit filename="src/Data/Shader.h" />
 		<Unit filename="src/Data/VideoMode.cpp" />
 		<Unit filename="src/Data/VideoMode.h" />
+		<Unit filename="src/Graphics/Draw.cpp" />
+		<Unit filename="src/Graphics/Draw.h" />
 		<Unit filename="src/Graphics/Form.cpp" />
 		<Unit filename="src/Graphics/Form.h" />
-		<Unit filename="src/Graphics/NObject.cpp" />
-		<Unit filename="src/Graphics/NObject.h" />
+		<Unit filename="src/Graphics/Text.cpp" />
+		<Unit filename="src/Graphics/Text.h" />
 		<Unit filename="src/NobelEngine.h" />
 		<Unit filename="src/Object/Triangles.cpp" />
 		<Unit filename="src/Object/Triangles.h" />

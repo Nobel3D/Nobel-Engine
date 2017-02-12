@@ -1,11 +1,11 @@
 #pragma once
 
 #include <nedef.h>
-#include <Graphics/NObject.h>
+#include <Graphics/Draw.h>
 #include <Data/Point.h>
 
 NE_NAMESTART
-    class Triangles : public NObject
+    class Triangles : public Drawable
     {
     private:
         Point3* geo_pTriangle1;

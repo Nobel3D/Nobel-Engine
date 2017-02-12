@@ -11,6 +11,7 @@
 typedef unsigned int GLuint;
 typedef float GLfloat;
 typedef unsigned short GLushort;
+typedef int COOR;
 
 #define STRERR(message) {       fprintf(stderr,message); fprintf(stderr,NL_ENDLINE); }
 
@@ -20,10 +21,10 @@ typedef unsigned short GLushort;
 #define ERRORFORM(message) {    Log::Add("FORM", message, NE_LOGPATH); \
                                 STRERR(message); }
 
-#define LOGOBJ(message) {      Log::Add("NOBJECT", message, NE_LOGPATH); \
+#define LOGOBJ(message) {      Log::Add("Drawable", message, NE_LOGPATH); \
                                 if(NL_DEBUG) STRERR(message); }
 
-#define ERROROBJ(message) {    Log::Add("NOBJECT", message, NE_LOGPATH); \
+#define ERROROBJ(message) {    Log::Add("Drawable", message, NE_LOGPATH); \
                                 STRERR(message); }
 
 #define LOGSHADER(message) {    Log::Add("COMPILESHADER", message, NE_LOGPATH); \
