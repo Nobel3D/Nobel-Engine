@@ -58,19 +58,16 @@ int main(int argc, char** argv)
     // Dark blue background
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
-/*	ShaderProgram shapro;
+	ShaderProgram shapro;
 
-	NFile* _vertex = new NFile("SimpleVertexShader.vertexshader");
-    NFile* _fragment = new NFile("SimpleFragmentShader.fragmentshader");
-
-    _vertex->Open(Reading);
-    _fragment->Open(Reading);
+    Filename* _vertex = new Filename("SimpleVertexShader.vertexshader");
+    Filename* _fragment = new Filename("SimpleFragmentShader.fragmentshader");
 
     vertex.Init(ShaderType::Vertex);
     fragment.Init(ShaderType::Fragment);
 
-    vertex.Load(_vertex->ReadAll());
-    fragment.Load(_fragment->ReadAll());
+    vertex.Load(*_vertex);
+    fragment.Load(*_fragment);
 
     vertex.Compile();
     fragment.Compile();
@@ -78,9 +75,6 @@ int main(int argc, char** argv)
     shapro.Attach(vertex); shapro.Attach(fragment);
     shapro.Link();
 
-	GLuint programID = LoadShaders(_vertex->ReadAll(), _fragment->ReadAll() );
-
-*/
 /*
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -108,14 +102,14 @@ glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data
 		// Clear the screen
 		glClear( GL_COLOR_BUFFER_BIT );
 
-//		shapro.Use();
+        shapro.Use();
         tri.Draw();
 		form->Swap();
 
 	} // Check if the ESC key was pressed or the window was closed
 	while( form->Frame() );
 
-//    shapro.Disable();
+   shapro.Disable();
 
 	tri.Destroy();
 

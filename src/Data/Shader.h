@@ -17,7 +17,7 @@ NE_NAMESTART
     public:
         Shader();
         void Init(const ShaderType& type);
-        void Load(NFile* stream);
+        void Load(const Filename& stream);
         void Load(const NString& code);
         void Compile();
         void Activate();

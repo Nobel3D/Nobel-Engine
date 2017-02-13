@@ -16,17 +16,18 @@ void Shader::Init(const ShaderType& type)
     sha_id = glCreateShader(type);
 }
 
-void Shader::Load(NFile* stream)
+void Shader::Load(const Filename& file)
 {
-    LOGSHADER("Starting Reading Shader -> " + stream->getName())
-    ASSERT(stream != nullptr)
+    LOGSHADER("Starting Reading Shader -> " + file.getName())
 
+    NFile* stream = new NFile(file);
+    stream->Open(Reading);
     const char* _code = stream->ReadAll();
 
     stream->Close();
+    delete[] stream;
     // Associate the source with the shader id
     glShaderSource(sha_id, 1, &_code, NULL);
-
 }
 
 void Shader::Load(const NString& code)
