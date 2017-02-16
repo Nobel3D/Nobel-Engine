@@ -15,22 +15,22 @@ NE_NAMESTART
 
     enum ScreenRatio
     {
-        _16_9   = 0,
-        _4_3    = 1
+        _16_9   = 16/9,
+        _4_3    = 4/3
     };
 
     class Resolution
     {
     private:
-        int scr_iWidth;
-        int scr_iHeight;
-        ScreenRatio scr_Ratio;
+        int iWidth;
+        int iHeight;
+        float fRatio;
     public:
         Resolution(int w, int h);
         ~Resolution() {};
         int getWidth() const;
         int getHeight() const;
-        ScreenRatio getRatio() const;
+        float getRatio() const;
     };
 
 NE_NAMECLOSE

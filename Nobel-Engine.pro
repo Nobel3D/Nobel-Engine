@@ -29,7 +29,9 @@ SOURCES += \
     src/Graphics/Draw.cpp \
     src/Graphics/Form.cpp \
     src/Graphics/Text.cpp \
-    src/Object/Triangles.cpp
+    src/Object/Triangles.cpp \
+    src/Data/Color.cpp \
+    src/Graphics/Camera.cpp
 
 HEADERS +=\
     src/Data/OpenGL.h \
@@ -41,7 +43,9 @@ HEADERS +=\
     src/Graphics/Text.h \
     src/Object/Triangles.h \
     src/nedef.h \
-    src/NobelEngine.h
+    src/NobelEngine.h \
+    src/Data/Color.h \
+    src/Graphics/Camera.h
 
 unix {
     target.path = /usr/lib

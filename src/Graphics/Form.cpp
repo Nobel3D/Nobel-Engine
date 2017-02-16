@@ -70,8 +70,10 @@ bool Form::Windowed(Resolution _res, Point _position)
 
 int Form::Show(Resolution _res)
 {
+    resUsing = new Resolution(_res);
     LOGFORM( "Showing Window: " + form_sTitle)
-    form = glfwCreateWindow( _res.getWidth(), _res.getHeight(), form_sTitle, NULL, NULL);
+    form = glfwCreateWindow( resUsing->getWidth(), resUsing->getHeight(), form_sTitle, NULL, NULL);
+
     if( form == NULL )
     {
 		ERRORFORM( "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible.\n" );
@@ -92,6 +94,9 @@ int Form::Show(Resolution _res)
 
 	// Ensure we can capture the escape key being pressed below
     glfwSetInputMode(form, GLFW_STICKY_KEYS, GL_TRUE);
+
+    glGenVertexArrays(1, &idVertexArray);
+    glBindVertexArray(idVertexArray);
 
     return NL_OK;
 }
@@ -122,4 +127,20 @@ void Form::Reshape(int x, int y)
 void Form::Swap()
 {
     glfwSwapBuffers(form);
+}
+
+void Form::BackgroundColor(const Color& color)
+{
+    glClearColor(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+}
+
+void Form::Clear()
+{
+    // Clear the screen
+    glClear( GL_COLOR_BUFFER_BIT );
+}
+
+Resolution* Form::getResolution()
+{
+    return resUsing;
 }

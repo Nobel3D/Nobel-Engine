@@ -13,7 +13,7 @@ typedef float GLfloat;
 typedef unsigned short GLushort;
 typedef int COOR;
 
-#define STRERR(message) {       fprintf(stderr,message); fprintf(stderr,NL_ENDLINE); }
+#define NE_LOG(sector, message) { LOG(sector, message, NE_LOGPATH) }
 
 #define LOGFORM(message) {      Log::Add("FORM", message, NE_LOGPATH); \
                                 if(NL_DEBUG) STRERR(message); }

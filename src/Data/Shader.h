@@ -54,8 +54,8 @@ public:
 		// Method to disable the shader program
 		void Disable();
 
-		// Returns the bound location of a named attribute
-		GLuint attribute(const NString &attribute);
+        // Returns value of a named attribute
+        GLuint getAttribute(const NString &attribute);
 
 
 		// Method to returns the bound location of a named uniform

@@ -22,12 +22,10 @@ void Shader::Load(const Filename& file)
 
     NFile* stream = new NFile(file);
     stream->Open(Reading);
-    const char* _code = stream->ReadAll();
-
+    const char* code = stream->ReadAll();
     stream->Close();
-    delete[] stream;
     // Associate the source with the shader id
-    glShaderSource(sha_id, 1, &_code, NULL);
+    glShaderSource(sha_id, 1, &code, NULL);
 }
 
 void Shader::Load(const NString& code)
@@ -114,8 +112,19 @@ void ShaderProgram::Link()
         GLint linkStatus;
         glGetProgramiv(sha_program, GL_LINK_STATUS, &linkStatus);
         if (linkStatus == GL_FALSE)
+        {
             ERRORSHADER("Failed to Link shaders")
-        else
+            int InfoLogLength;
+            glGetProgramiv(sha_program, GL_INFO_LOG_LENGTH, &InfoLogLength);
+            if (InfoLogLength > 0)
+            {
+                char ProgramErrorMessage[InfoLogLength + 1];
+                glGetProgramInfoLog(sha_program, InfoLogLength, NULL, ProgramErrorMessage);
+                printf("%s\n", ProgramErrorMessage);
+            }
+
+        }
+         else
             LOGSHADER("Shaders Linked")
     }
     else
@@ -135,4 +144,8 @@ void ShaderProgram::Disable()
     glUseProgram(0);
 }
 
+GLuint ShaderProgram::getAttribute(const NString &attribute)
+{
+    return glGetUniformLocation(sha_program, attribute);
+}
 

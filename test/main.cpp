@@ -11,6 +11,7 @@
 
 using namespace NobelLib;
 using namespace NobelEngine;
+using namespace glm;
 
 Form* form;
 Triangles tri( new Point3(-1.0f, -1.0f, 0.0f),
@@ -56,7 +57,8 @@ int main(int argc, char** argv)
     form->Show(Resolution(800,600));
 
     // Dark blue background
-	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+    Color background(MAX_COLOR / 255, MAX_COLOR / 165, 0, 0.5f);
+    form->BackgroundColor(background);
 
 	ShaderProgram shapro;
 
@@ -75,43 +77,171 @@ int main(int argc, char** argv)
     shapro.Attach(vertex); shapro.Attach(fragment);
     shapro.Link();
 
-/*
-	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-    glBindVertexArray(VertexArrayID);
+    Camera* camera = new Camera(vec3(4,3,3), vec3(0,0,0), vec3(0,1,0), 0.1f, 100.f);
 
-	static const GLfloat g_vertex_buffer_data[] = {
-   -1.0f, -1.0f, 0.0f,
-   1.0f, -1.0f, 0.0f,
-   0.0f,  1.0f, 0.0f,
-};
+    mat4 Projection = camera->projection(45.0f,form->getResolution());
 
-// This will identify our vertex buffer
-GLuint vertexbuffer;
-// Generate 1 buffer, put the resulting identifier in vertexbuffer
-glGenBuffers(1, &vertexbuffer);
-// The following commands will talk about our 'vertexbuffer' buffer
-glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-// Give our vertices to OpenGL.
-glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-*/
-    tri.Load();
+    mat4 View = camera->lookAt();
+
+    // Model matrix : an identity matrix (model will be at the origin)
+    glm::mat4 Model      = glm::mat4(1.0f);
+
+    // Get a handle for our "MVP" uniform
+    GLuint MatrixID = shapro.getAttribute("MVP");
+
+    // Our ModelViewProjection : multiplication of our 3 matrices
+    glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
+
+
+    // Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
+    // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
+    static const GLfloat g_vertex_buffer_data[] = {
+        -1.0f,-1.0f,-1.0f,
+        -1.0f,-1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+         1.0f, 1.0f,-1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f, 1.0f,-1.0f,
+         1.0f,-1.0f, 1.0f,
+        -1.0f,-1.0f,-1.0f,
+         1.0f,-1.0f,-1.0f,
+         1.0f, 1.0f,-1.0f,
+         1.0f,-1.0f,-1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f,-1.0f,
+         1.0f,-1.0f, 1.0f,
+        -1.0f,-1.0f, 1.0f,
+        -1.0f,-1.0f,-1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f,-1.0f, 1.0f,
+         1.0f,-1.0f, 1.0f,
+         1.0f, 1.0f, 1.0f,
+         1.0f,-1.0f,-1.0f,
+         1.0f, 1.0f,-1.0f,
+         1.0f,-1.0f,-1.0f,
+         1.0f, 1.0f, 1.0f,
+         1.0f,-1.0f, 1.0f,
+         1.0f, 1.0f, 1.0f,
+         1.0f, 1.0f,-1.0f,
+        -1.0f, 1.0f,-1.0f,
+         1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f,-1.0f,
+        -1.0f, 1.0f, 1.0f,
+         1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+         1.0f,-1.0f, 1.0f
+    };
+
+    // One color for each vertex. They were generated randomly.
+    static const GLfloat g_color_buffer_data[] = {
+        0.f,  0.f,  1.f, ///
+        0.f,  0.f,  1.f,
+        0.f,  0.f,  1.f,
+
+        0.f,  1.f,  0.f,
+        0.f,  1.f,  0.f,
+        0.f,  1.f,  0.f,
+
+        1.f,  0.f,  0.f, //
+        0.f,  0.f,  1.f,
+        0.f,  0.f,  1.f,
+
+        1.f,  0.f,  0.f, //
+        0.f,  0.f,  1.f,
+        0.f,  0.f,  1.f,
+
+        1.f,  0.f,  0.f, //
+        1.f,  0.f,  0.f,
+        1.f,  0.f,  0.f,
+
+        0.f,  1.f,  0.f, //
+        0.f,  0.f,  1.f,
+        0.f,  0.f,  1.f,
+
+        0.f,  0.f,  1.f, /*Triangolo basso frontale*/
+        0.f,  0.f,  1.f,
+        0.f,  0.f,  1.f,
+
+        1.f,  0.f,  0.f, /*Triangolo alto lato destro*/
+        1.f,  0.f,  0.f,
+        1.f,  0.f,  0.f,
+
+        1.f,  0.f,  0.f,
+        1.f,  0.f,  0.f,
+        1.f,  0.f,  0.f,
+
+        0.f,  1.f,  0.f, /*Triangolo alto superiore*/
+        0.f,  1.f,  0.f,
+        0.f,  1.f,  0.f,
+
+        0.f,  1.f,  0.f,
+        0.f,  1.f,  0.f,
+        0.f,  1.f,  0.f,
+
+        0.f,  0.f,  1.f, /*Triangolo alto frontale*/
+        0.f,  0.f,  1.f,
+        0.f,  0.f,  1.f
+    };
+
+    GLuint vertexbuffer;
+    glGenBuffers(1, &vertexbuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+    GLuint colorbuffer;
+    glGenBuffers(1, &colorbuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
 
 
 	do{
-		// Clear the screen
-		glClear( GL_COLOR_BUFFER_BIT );
-
+        form->Clear();
         shapro.Use();
-        tri.Draw();
+        // Send our transformation to the currently bound shader,
+        // in the "MVP" uniform
+        glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+
+
+        // 1rst attribute buffer : vertices
+                glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+                glVertexAttribPointer(
+                    0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+                    3,                  // size
+                    GL_FLOAT,           // type
+                    GL_FALSE,           // normalized?
+                    0,                  // stride
+                    (void*)0            // array buffer offset
+                );
+
+                // 2nd attribute buffer : colors
+                glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
+                glVertexAttribPointer(
+                    1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+                    3,                                // size
+                    GL_FLOAT,                         // type
+                    GL_FALSE,                         // normalized?
+                    0,                                // stride
+                    (void*)0                          // array buffer offset
+                );
+
+                // Draw the triangle !
+                glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles
+
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+
 		form->Swap();
 
 	} // Check if the ESC key was pressed or the window was closed
 	while( form->Frame() );
 
    shapro.Disable();
-
-	tri.Destroy();
+   glDeleteBuffers(1, &vertexbuffer);
+   glDeleteBuffers(1, &colorbuffer);
 
     return 0;
 }
